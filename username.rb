@@ -17,9 +17,10 @@ def format_year year
   end
 end
 
-def build_username (first_name, last_name, year)
-  "#{format_name(first_name,last_name)}#{format_year(year)}"
+def build_username (first_name, last_name, year, privilege_level)
+  "#{user_type_prefix(privilege_level)}#{format_name(first_name,last_name)}#{format_year(year)}"
 end
+
 
 def check_privilege (number = 0)
   if number == 0
@@ -35,7 +36,7 @@ end
 
 def user_type_prefix (level)
   if level == 0
-  "user-"
+  ""
   elsif level == 1
   "seller-"
   elsif level == 2
