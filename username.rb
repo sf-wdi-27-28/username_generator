@@ -5,8 +5,8 @@ def format_name(first, last)
     if first == "" || last == ""
       nil
     else
-      new_first = first.gsub(/[\d|\W]/, "")
-      new_last = last.gsub(/[\d|\W]/, "")
+      new_first = first.gsub(/\d|\W/, "")
+      new_last = last.gsub(/\d|\W/, "")
       name = new_first[0] + new_last
       name.downcase
     end
