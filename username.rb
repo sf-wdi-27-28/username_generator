@@ -42,3 +42,20 @@ def generate_username(first_name, last_name, birth_year, privilege_level = 0)
   end
   new_username
 end
+
+def get_inputs
+  puts "First name"
+  first = gets.chomp
+  puts "Last name"
+  last = gets.chomp
+  puts "Birth year"
+  year = gets.chomp
+  puts "Priority level"
+  pl = gets.chomp.to_i
+  puts generate_username(first,last,year,pl)
+  puts "Create another? ('Y' or 'N')"
+  res = gets.chomp
+  if res === 'Y' then get_inputs end
+end
+
+get_inputs
