@@ -19,8 +19,8 @@ def format_year(year)
   end
 end
 
-def build_username(first_name, last_name, year)
-  "#{format_name(first_name, last_name)}#{format_year(year)}"
+def build_username(first_name, last_name, year,num=0)
+  "#{user_type_prefix(num)}#{format_name(first_name, last_name)}#{format_year(year)}"
 end
 
 
