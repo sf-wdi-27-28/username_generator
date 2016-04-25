@@ -24,7 +24,8 @@ def build_username(first_name, last_name, year)
 end
 
 
-def check_privilege(user_type=0)
+def check_privilege(user=0)
+  user_type = user.floor
   if user_type == 0
     "user"
   elsif user_type == 1
@@ -34,5 +35,12 @@ def check_privilege(user_type=0)
   else
     "admin"
   end
+end
 
+def user_type_prefix(num=0)
+  if num == 0
+    ""
+  else
+    "#{check_privilege(num)}"+"-"
+  end
 end
