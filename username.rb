@@ -8,6 +8,7 @@ def format_name(first, last)
   username << l
   username.downcase
 
+
   # end
 end
 format_name(" j a c k i e "," f a m b r o u g h ")
@@ -24,7 +25,8 @@ def build_username (first_name, last_name, year, privilege_level=0)
 end
 
 
-def check_privilege (number = 0)
+def check_privilege (num = 0)
+  number = num.floor
   if number == 0
   "user"
   elsif number == 1
