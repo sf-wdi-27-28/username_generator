@@ -2,8 +2,10 @@
 # Run `rspec spec/username_spec.rb` to get started.
 
 def format_name(first, last)
-  username = first[0]
-  username << last
+  f = first.delete(" ")
+  l = last.delete(" ")
+  username = f[0]
+  username << l
   username.downcase
 
   # end
