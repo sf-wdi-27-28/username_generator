@@ -20,18 +20,36 @@ def build_username (first_name, last_name, year)
 end
 
 def check_privilege arg=0
-  arg = arg.floor
-  if arg == 0
-    return "user"
-  elsif arg == 1
-    return "seller"
-  elsif arg == 2
-    return "manager"
-  elsif arg >= 3
-    return "admin"
-  end
+  user_types = ["user","seller","manager","admin"]
+  arg = 3 if arg > 3
+  user_types[arg]
 end
 
-def generate_username arg
+def user_type_prefix arg
+  prefix = check_privilege(arg)
+  unless prefix == "user" then prefix << "-" else "" end
+end
 
+def build_username (first, last, year, arg=0)
+  name = format_name(first, last)
+  return nil if name.nil?
+  yy = format_year(year)
+  return nil if yy.nil?
+
+  user_type_prefix(arg) + name + yy
+end
+
+$user_counts = {}
+
+def generate_username (first, last, year, arg=0)
+  username = build_username(first, last, year, arg)
+
+  if $user_counts[username].nil?
+    $user_counts[username] = 0;
+    username
+  else
+    $user_counts[username] +=1
+    user_count = $user_counts[username].to_s
+    username + "_" + user_count
+  end
 end
