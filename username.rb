@@ -2,13 +2,13 @@
 # Run `rspec spec/username_spec.rb` to get started.
 
 def format_name(first, last)
-  nil
+  (first[0] + last).downcase
 end
 
-def format_year
-  nil
+def format_year(year)
+
 end
 
-def build_username
-  nil
+def build_username()
+
 end
