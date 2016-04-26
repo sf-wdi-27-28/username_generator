@@ -44,3 +44,22 @@ def user_type_prefix(num=0)
     "#{check_privilege(num)}"+"-"
   end
 end
+
+# $arr = []
+# $n = 1
+# def generate_username(first_name, last_name, birth_year, privilege_level=0)
+#   username = build_username(first_name, last_name, birth_year, privilege_level)
+#   if $arr.include?(username) == false
+#     $arr.push(username)
+#     return username
+#   elsif $arr.include?(username) == true
+#     $arr.length.times do |i|
+#       if i == username
+#         user = username + "_" + $n.to_s
+#         $n =+ 1
+#         $arr.push(user)
+#         return user
+#       end
+#     end
+#   end
+# end
