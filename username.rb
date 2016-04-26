@@ -62,16 +62,14 @@ $username2=0
 $value=0
 
 def generate_username(first,last,num,type=0)
-  if $usernames[$username].nil?
-    $username=build_username(first,last,num,type=0)
-    $usernames[$username]=0
-    $value=$username
-    $usernames[$value]=0
-    return $username
-  else
-    $usernames[$value] += 1
-    suffix = "_"+$usernames[$value].to_s
+  $username=build_username(first,last,num,type=0)
+  if $usernames.include?($username)
+    $usernames[$username] +=1
+    suffix = "_"+$usernames[$username].to_s
     $username=build_username(first,last,num,type=0)+suffix
     return $username
+  else
+    $usernames[$username] = 0
   end
+  $username
 end
