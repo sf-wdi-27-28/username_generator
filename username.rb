@@ -19,8 +19,8 @@ string = year.to_s
   string[2,2]
   end
 end
-def build_username(first_name, last_name, year)
-  "#{format_name(first_name, last_name)}#{format_year(year)}"
+def build_username(first_name, last_name, year, level = 0)
+  "#{user_type_prefix(level)}#{format_name(first_name, last_name)}#{format_year(year)}"
 end
 
 def check_privilege(user_type = 0)
@@ -30,15 +30,20 @@ def check_privilege(user_type = 0)
      "seller"
   elsif user_type == 2
       "manager"
-  else user_type == 3
+  elsif user_type == 3
       "admin"
   end
 end
 
-def user_type_prefix(level)
+def user_type_prefix(level = 0)
   if level == 0
   ""
   else
   "#{check_privilege(level)}" + "-"
   end
+end
+
+
+def generete_username(first_name, last_name, birth_year, privilege_level)
+
 end
