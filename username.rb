@@ -7,7 +7,8 @@ def format_name(first, last)
   l = last.delete(" ")
   username = f[0]
   username << l
-  username.downcase
+  user = username.downcase
+  user.gsub(/[\W]/, '') # this is meant to remove special characters, but it doesn't work!
 end
 
 
@@ -54,13 +55,13 @@ end
 
 
 def generate_username (first_name, last_name, birth_year, privilege_level)
-  username = build_username(first_name, last_name, birth_year, privilege_level)
-  $user_counts = {}
-  if $user_counts[username].nil?
-    $user_counts[username] = 0
+  newuser = build_username(first_name, last_name, birth_year, privilege_level)
+
+  if newuser.nil?
+    newuser = 0
   else
-    $user_counts[username] +=1
-    user_count = $user_counts[username].to_string
-    username + "_" + user_count
+    newuser +=1
+    user_count = newuser.to_string
+    newuser + "_" + user_count
   end
 end
