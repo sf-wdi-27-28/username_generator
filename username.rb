@@ -2,7 +2,10 @@
 # Run `rspec spec/username_spec.rb` to get started.
 
 def format_name(first, last)
-  (first[0]<<last).downcase
+  return nil if first.empty? || last.empty?
+  first_name = first.gsub(/[^a-z]/i, "")
+  last_name = last.gsub(/[^a-z]/i, "")
+  (first_name[0] << last_name).downcase
 end
 
 def format_year year
@@ -20,14 +23,11 @@ def check_privilege arg=0
   arg = arg.floor
   if arg == 0
     return "user"
-  end
-  if arg == 1
+  elsif arg == 1
     return "seller"
-  end
-  if arg == 2
+  elsif arg == 2
     return "manager"
-  end
-  if arg >= 3
+  elsif arg >= 3
     return "admin"
   end
 end
