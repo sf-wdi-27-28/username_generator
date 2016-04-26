@@ -2,16 +2,14 @@
 # Run `rspec spec/username_spec.rb` to get started.
 
 def format_name(first, last)
+  return nil if first.empty? || last.empty?
   f = first.delete(" ")
   l = last.delete(" ")
   username = f[0]
   username << l
   username.downcase
-
-
-  # end
 end
-format_name(" j a c k i e "," f a m b r o u g h ")
+
 
 def format_year (year)
   year = year.to_s
@@ -21,7 +19,10 @@ def format_year (year)
 end
 
 def build_username (first_name, last_name, year, privilege_level=0)
-  "#{user_type_prefix(privilege_level)}#{format_name(first_name,last_name)}#{format_year(year)}"
+name = format_name(first_name,last_name)
+return nil if name.nil?
+  "#{user_type_prefix(privilege_level)}#{name}#{format_year(year)}"
+
 end
 
 
@@ -50,7 +51,16 @@ def user_type_prefix (level)
   end
 end
 
+
+
 def generate_username (first_name, last_name, birth_year, privilege_level)
-  unique_username = first_name << last_name << birth_year << privilege_level
-  unique_username
+  username = build_username(first_name, last_name, birth_year, privilege_level)
+  $user_counts = {}
+  if $user_counts[username].nil?
+    $user_counts[username] = 0
+  else
+    $user_counts[username] +=1
+    user_count = $user_counts[username].to_string
+    username + "_" + user_count
+  end
 end
